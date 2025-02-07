@@ -1,84 +1,88 @@
-📄 **jQuery Form Validator Plugin**  
-A lightweight jQuery plugin for form validation with customizable error messages and styling. Ideal for enhancing user input validation in web forms.
+Here’s a detailed README for this cardiovascular disease prediction project, incorporating insights from the Jupyter notebook analysis:
 
 ---
 
-## 🚀 Getting Started
+# 🩺 Cardiovascular Disease Prediction Project  
+*By Ornella Sofía Gigante*  
 
-### Features  
-- **Validation Rules**: Supports various validations (required, email, etc.) with custom error messages.  
-- **Bootstrap Integration**: Compatible with Bootstrap classes (`form-group`, `help-block`).  
-- **Custom Styling**: Apply error/success states using CSS classes (`errorElementClass`, `valid`).  
-- **Deprecation Handling**: Warns about outdated attributes like `data-validation-if-checked` (use `data-validation-depends-on`).  
-- **Events**: Triggers events like `validationErrorDisplay` for custom error handling.  
+## 📌 Project Overview  
+This project aims to predict cardiovascular diseases using patient clinical data. Two machine learning models (Decision Tree and Gaussian Naive Bayes) were implemented and compared for binary classification (disease present/absent).  
 
 ---
 
-## 🛠️ Installation  
-Include jQuery and the plugin script:  
-```html
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="jquery.form-validator.min.js"></script>
-```
+## 🔍 Dataset  
+**Key Features Analyzed**:  
+- Age  
+- Gender (1 = male)  
+- Chest pain type (0-3 scale)  
+- Resting blood pressure (mmHg)  
+- Serum cholesterol (mg/dl)  
+- Fasting blood sugar  
+- Resting electrocardiogram results  
+- Maximum heart rate  
+- Exercise-induced angina  
+- ST depression (oldpeak)  
+- Slope of peak exercise ST segment  
+- Number of major vessels  
+
+**Target Variable**:  
+- `target` (1 = disease detected, 0 = no disease)  
 
 ---
 
-## 🎯 Usage  
-Initialize validation on a form:  
-```javascript
-$('form').validate({
-  errorMessageClass: 'alert alert-danger',
-  submitErrorMessageCallback: function($form, config, errors) {
-    // Custom error handling
-  }
-});
-```
+## 🤖 Models Used  
+### 🌳 Decision Tree Classifier  
+- Achieved **71.15% accuracy**  
+- Advantages: Simple interpretation, handles non-linear relationships  
 
-### Key Configuration Options  
-| Option | Description |  
-|--------|-------------|  
-| `errorMessageClass` | CSS class for error messages (default: `help-block`). |  
-| `inputParentClassOnError` | Parent container class on error (e.g., `has-error`). |  
-| `submitErrorMessageCallback` | Callback to handle form-wide errors. |  
+### 🧪 Gaussian Naive Bayes  
+- Achieved **70.49% accuracy**  
+- Advantages: Fast computation, works well with small datasets  
 
 ---
 
-## ⚠️ Deprecation Notes  
-- Avoid `errorMessageCustom`; use `submitErrorMessageCallback` instead.  
-- Replace `data-validation-if-checked` with `data-validation-depends-on`.  
+## 📊 Key Results  
+| Metric          | Decision Tree | Naive Bayes |
+|-----------------|---------------|-------------|
+| **Accuracy**    | 71.15%        | 70.49%      |  
+
+Both models showed similar performance, suggesting room for improvement through:  
+- Feature engineering  
+- Hyperparameter tuning  
+- Larger/more balanced datasets  
 
 ---
 
-## 🔌 Events  
-- `validationErrorDisplay`: Triggered when an error message is shown.  
-  ```javascript
-  $(window).on('validationErrorDisplay', function(event, $input, $errorMsg) {
-    // Custom logic
-  });
-  ```
+## 🛠️ How to Run  
+1. **Dependencies**:  
+   ```python
+   pandas==1.5.3
+   numpy==1.24.3
+   scikit-learn==1.2.2
+   jupyter==1.0.0
+   ```
+
+2. **Execution Steps**:  
+   ```bash
+   # Clone repository
+   git clone https://github.com/username/cardio-prediction.git
+   
+   # Launch Jupyter notebook
+   jupyter notebook Ornella_Gigante_lab4.ipynb
+   ```
 
 ---
 
-## 🌍 Browser Support  
-Tested in modern browsers (Chrome, Firefox, Safari). IE10+ compatible.
+## 🚀 Future Improvements  
+- 🔧 Experiment with deeper tree structures and pruning  
+- 🤖 Test ensemble methods (Random Forest, XGBoost)  
+- 🧬 Incorporate additional medical biomarkers  
+- 📈 Implement cross-validation for robust evaluation  
+- ⚖️ Address potential class imbalance  
 
----
+*Developed using Python 3.9 and Jupyter Lab environment.*  
 
-## 🤝 Contributing  
-1. Fork the repository.  
-2. Use **Grunt** for builds (see comments in the minified code).  
-3. Submit a pull request with tests.  
+--- 
 
----
+This project demonstrates foundational ML workflow implementation for healthcare diagnostics, with potential real-world applications in early disease detection.
 
-## 📜 License  
-MIT License © [Victor Jonsson](http://victorjonsson.se).  
-
----
-
-🛡️ **Acknowledgements**  
-- Built with Grunt for task automation.  
-- Inspired by community feedback and legacy validation practices.
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/14161216/2ff986e6-f053-4c9c-b5c0-cc0caeb8f3b7/jquery.form-validator.min.js
